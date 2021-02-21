@@ -3,7 +3,7 @@
 This is a Simple `Helm Chart` for `WordPress` that connects to a `Managed MySQL` (Expecting to provide the MySQL IP)
 
 
-
+.
 
 ### My Sample setup (Example)
 
@@ -41,6 +41,7 @@ helm install <Release-Name>  \
   --set External_MySQL.IP=192.168.12.102 \
   --set External_MySQL.Password=$(echo 'password' | base64) wordpress-managed-mysql \
   --dry-run
+
 
 helm install <Release-Name>  \ 
   --set storage.wordpress.storageClassName=cephfs \ 
