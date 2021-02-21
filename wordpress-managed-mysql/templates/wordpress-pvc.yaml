@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: wp-{{ .Release.Name }}
+spec:
+  storageClassName: {{ required "The storage class name" .Values.storage.wordpress.storageClassName }} # cephfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.storage.wordpress.StorageSize }} # 1Gi

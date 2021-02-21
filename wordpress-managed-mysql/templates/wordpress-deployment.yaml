@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: wordpress-{{ .Release.Name }}
+spec:
+  replicas: {{ .Values.ReplicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        tier: frontend
+    spec:
+      containers:
+        - name: wordpress
+          image: {{ .Values.image.wordpress.repository }}
+          imagePullPolicy: {{ .Values.image.wordpress.pullPolicy }}
+          volumeMounts:
+            - name: vol-mount
+              mountPath: /var/www/html/
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: mysql-external-db
+            - name: WORDPRESS_DB_USER
+              value: admin
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-external-password-{{ .Release.Name }}
+                  key: mysql_user_password
+          ports:
+            - containerPort: 80
+              name: wordpress
+      volumes:
+        - name: vol-mount
+          persistentVolumeClaim:
+            claimName: wp-{{ .Release.Name }}
