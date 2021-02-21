@@ -1,16 +1,15 @@
 # Wordpress-with-Managed-MySQL--Helm-Chart
 
-This is a Simple Helm Chart for "WordPress" with a  Managed MySQL (Expecting to provide the MySQL IP)
+This is a Simple `Helm Chart` for `WordPress` that connects to a `Managed MySQL` (Expecting to provide the MySQL IP)
 
 
 
-## Usage
 
-### My Sample setup
+### My Sample setup (Example)
 
 In this example I'm connecting the WordPress to this `MySQL cluster` (with the `Virtual Ip` for sure) which is `192.168.12.102` here
 
-* You can use this 🙋‍ [Ansible repo](https://github.com/eslam-gomaa/mysql-active-passive-replication-Ansible) to install a Test MySQL Cluster or just intall one MySQL Instance (_doesn't matter for test environment_)
+* You can use this 🙋‍ [Ansible repo](https://github.com/eslam-gomaa/mysql-active-passive-replication-Ansible) to install a Test `MySQL Cluster` or just intall one MySQL Instance (_doesn't matter for test environment_)
 
 ![](https://i.imgur.com/SyoWx8k.png)
 
@@ -18,6 +17,7 @@ In this example I'm connecting the WordPress to this `MySQL cluster` (with the `
 
 ---
 
+# Usage
 
 > Validate the syntax
 
