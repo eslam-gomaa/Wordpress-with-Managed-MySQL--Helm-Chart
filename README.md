@@ -51,7 +51,7 @@ helm install <Release-Name>  \
 
 > Uninstall
 ```bash
-helm <Release-Name>
+helm ls
 
 helm uninstall <Release-Name>
 ```
