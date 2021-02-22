@@ -36,17 +36,18 @@ helm show values wordpress-managed-mysql
 
 ```bash
 # Validate the yaml with dry-run
-helm install <Release-Name>  \ 
-  --set storage.wordpress.storageClassName=cephfs \ 
+helm install <Release-Name> \
+  --set storage.wordpress.storageClassName=cephfs \
   --set External_MySQL.IP=192.168.12.102 \
   --set External_MySQL.Password=$(echo 'password' | base64) wordpress-managed-mysql \
   --dry-run
 
 
-helm install <Release-Name>  \ 
-  --set storage.wordpress.storageClassName=cephfs \ 
+helm install <Release-Name> \
+  --set storage.wordpress.storageClassName=cephfs \
   --set External_MySQL.IP=192.168.12.102 \
-  --set External_MySQL.Password=$(echo 'password' | base64) wordpress-managed-mysql
+  --set External_MySQL.Password=$(echo 'password' | base64) wordpress-managed-mysql \
+  --set service.wordpress.type=LoadBalancer
 ```
 
 > Uninstall
